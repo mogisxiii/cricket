@@ -155,6 +155,86 @@ const trustItems = [
   ["Mua lẻ vẫn hỗ trợ", "Phù hợp cá nhân và đội xe"],
 ];
 
+
+const lockGuideItems = [
+  {
+    title: "Mở khóa",
+    lines: [
+      "Nhập mật khẩu 4–16 chữ số rồi nhấn OK.",
+      "Nếu mật khẩu đúng, khóa phát âm báo dài khoảng 2 giây và đèn báo sáng; thao tác xoay mở trong vòng 3 giây.",
+      "Nhập sai mật khẩu 4 lần liên tiếp sẽ khóa bàn phím trong 50 giây.",
+    ],
+  },
+  {
+    title: "Thiết lập mật khẩu quản trị",
+    lines: [
+      "Ở trạng thái đã mở bằng mật khẩu quản trị, nhấn giữ phím 1 đến khi nghe âm báo dài, sau đó nhấn OK.",
+      "Khi đèn nhấp nháy, nhập mật khẩu mới 4–16 chữ số rồi nhấn OK để hoàn tất.",
+    ],
+  },
+  {
+    title: "Thiết lập mật khẩu người dùng",
+    lines: [
+      "Ở trạng thái mở bằng mật khẩu quản trị, nhấn giữ phím 2 đến khi nghe âm báo dài, sau đó nhấn OK.",
+      "Khi đèn nhấp nháy, nhập mật khẩu 4–16 chữ số rồi nhấn OK.",
+      "Theo tài liệu đi kèm, mật khẩu người dùng và mật khẩu quản trị không được giống nhau; khi dùng mật khẩu quản trị để mở khóa, mật khẩu người dùng sẽ tự động bị xóa và cần thiết lập lại.",
+    ],
+  },
+  {
+    title: "Mật khẩu tạm thời",
+    lines: [
+      "Ở trạng thái mở bằng mật khẩu người dùng hoặc quản trị, nhấn giữ phím 3 đến khi nghe âm báo dài, sau đó nhấn OK.",
+      "Nhập mật khẩu tạm thời 4–16 chữ số rồi nhấn OK. Mật khẩu tạm thời mất hiệu lực sau một lần mở khóa.",
+    ],
+  },
+  {
+    title: "Bật / tắt mật khẩu giả",
+    lines: [
+      "Ở trạng thái mở khóa, nhấn giữ phím 4 đến khi nghe âm báo dài và đèn nhấp nháy, sau đó nhấn OK để chuyển trạng thái.",
+      "Khi chức năng mật khẩu giả được bật, có thể nhập thêm các chữ số trước hoặc sau mật khẩu đúng; khóa vẫn mở nếu chuỗi nhập liên tục chứa mật khẩu chính xác.",
+    ],
+  },
+  {
+    title: "Bật / tắt âm báo",
+    lines: [
+      "Ở trạng thái mở khóa, nhấn giữ phím 5 đến khi nghe âm báo dài và đèn nhấp nháy, sau đó nhấn OK để tắt còi.",
+      "Lặp lại thao tác để bật lại âm báo.",
+    ],
+  },
+  {
+    title: "Chế độ công khai",
+    lines: [
+      "Ở trạng thái mở khóa, nhấn giữ phím 6 đến khi nghe âm báo dài và đèn nhấp nháy, sau đó nhấn OK để chuyển trạng thái chế độ công khai.",
+      "Trong chế độ công khai, có thể thiết lập mật khẩu cho một lần sử dụng; sau khi mở khóa thành công, mật khẩu đó mất hiệu lực.",
+    ],
+  },
+  {
+    title: "Quên mật khẩu / khôi phục",
+    lines: [
+      "Ghi lại số sê-ri của khóa và cung cấp thông tin cần thiết để xác minh.",
+      "Theo tài liệu, sau khi xác minh, nhà sản xuất sẽ cung cấp khóa giải mã để thực hiện khôi phục qua cổng USB của khóa.",
+    ],
+  },
+];
+
+const installationSheets = [
+  {
+    title: "Tài liệu hướng dẫn đi kèm",
+    text: "Bìa tài liệu lắp đặt Cricket.",
+    src: "/support/cricket-install-01.jpg",
+  },
+  {
+    title: "Chuẩn bị & lắp cụm ty",
+    text: "Kiểm tra phụ kiện, căn khoảng cách hai ty theo ghế và dùng ống đệm phù hợp nếu cần.",
+    src: "/support/cricket-install-02.jpg",
+  },
+  {
+    title: "Gắn tựa đầu & kiểm tra an toàn",
+    text: "Cố định cụm ty vào tựa đầu, lắp vào ghế và kiểm tra độ chắc chắn trước khi sử dụng.",
+    src: "/support/cricket-install-03.jpg",
+  },
+];
+
 function Header() {
   return (
     <header className="fixed left-0 top-0 z-50 w-full border-b border-[#b87333]/30 bg-[#050403]/95 backdrop-blur-xl">
@@ -947,6 +1027,199 @@ function ContactStrip() {
   );
 }
 
+
+function SupportCenter() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = "Hỗ trợ sản phẩm | Cricket";
+    return () => {
+      document.title = previousTitle;
+    };
+  }, []);
+
+  return (
+    <main className="min-h-screen bg-[#f7efe5] text-[#160d08]">
+      <header className="sticky top-0 z-40 border-b border-[#d89a45]/20 bg-[#050403]/95 px-5 py-3 text-white backdrop-blur md:px-8">
+        <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-4">
+          <a href="/" className="flex items-center gap-3" aria-label="Về trang chủ Cricket">
+            <img src={logo} alt="Cricket" className="h-11 rounded-md bg-white p-1" />
+            <div className="hidden sm:block">
+              <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#d89a45]">Cricket Vietnam</p>
+              <p className="text-[13px] font-semibold text-[#ead8c4]">Trung tâm hỗ trợ</p>
+            </div>
+          </a>
+          <a
+            href="/"
+            className="rounded-xl border border-[#d89a45]/45 px-4 py-2.5 text-[12px] font-extrabold uppercase tracking-[0.06em] text-[#f5dfc5] transition hover:bg-[#d89a45]/10"
+          >
+            Trang chủ
+          </a>
+        </div>
+      </header>
+
+      <section className="bg-[radial-gradient(circle_at_top_right,rgba(216,154,69,.18),transparent_34%),linear-gradient(180deg,#0b0603,#160b05)] px-5 py-14 text-white md:px-8 md:py-20">
+        <div className="mx-auto max-w-[1080px]">
+          <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[#d89a45]">QR Support Center</p>
+          <h1 className="mt-4 max-w-[780px] text-[clamp(36px,8vw,68px)] font-black uppercase leading-[0.98] tracking-[-0.055em]">
+            Hướng dẫn & hỗ trợ Cricket
+          </h1>
+          <p className="mt-6 max-w-[720px] text-[16px] leading-7 text-[#e5d2bd] md:text-[18px]">
+            Tra cứu nhanh cách sử dụng khóa, hướng dẫn lắp đặt và kênh hỗ trợ bảo hành ngay trên điện thoại.
+          </p>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
+            <a href="#lock-guide" className="rounded-2xl bg-[#d89a45] px-5 py-4 text-center text-[13px] font-black uppercase text-[#170d07] shadow-[0_12px_30px_rgba(216,154,69,.18)]">
+              Hướng dẫn khóa
+            </a>
+            <a href="#installation" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[13px] font-black uppercase text-white">
+              Hướng dẫn lắp đặt
+            </a>
+            <a href="#warranty" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[13px] font-black uppercase text-white">
+              Bảo hành
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="lock-guide" className="scroll-mt-24 px-5 py-14 md:px-8 md:py-20">
+        <div className="mx-auto max-w-[1080px]">
+          <div className="max-w-[760px]">
+            <p className="text-[12px] font-black uppercase tracking-[0.2em] text-[#a94f22]">01 · Hướng dẫn sử dụng khóa</p>
+            <h2 className="mt-3 text-[32px] font-black uppercase leading-tight tracking-[-0.04em] md:text-[46px]">Các thao tác cần biết</h2>
+            <p className="mt-4 text-[15px] leading-7 text-[#684d3b]">
+              Nội dung được biên tập ngắn gọn từ tài liệu hướng dẫn đi kèm sản phẩm để dễ tra cứu trên điện thoại.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="rounded-3xl border border-[#d9bea1] bg-white p-6 shadow-[0_18px_45px_rgba(80,45,20,.08)]">
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#a94f22]">Thông số mặc định</p>
+              <p className="mt-3 text-[30px] font-black">1234</p>
+              <p className="mt-1 text-[14px] font-bold">Mật khẩu quản trị mặc định</p>
+              <div className="mt-5 grid grid-cols-2 gap-3 text-[13px]">
+                <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Mật khẩu giả:</strong><br />Bật</div>
+                <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Còi báo:</strong><br />Bật</div>
+                <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Chế độ công khai:</strong><br />Tắt</div>
+                <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Mật khẩu người dùng:</strong><br />Chưa có</div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-[#d89a45]/35 bg-[#160c06] p-6 text-white shadow-[0_18px_45px_rgba(0,0,0,.16)]">
+              <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#d89a45]">Tín hiệu âm thanh</p>
+              <div className="mt-4 space-y-3 text-[14px] leading-6 text-[#ead8c4]">
+                <p><strong className="text-white">Âm ngắn “tick”:</strong> âm phím.</p>
+                <p><strong className="text-white">Âm dài khoảng 2 giây:</strong> thao tác thành công.</p>
+                <p><strong className="text-white">“tick... tick”:</strong> thao tác hoặc mật khẩu sai.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 space-y-3">
+            {lockGuideItems.map((item, index) => (
+              <details key={item.title} className="overflow-hidden rounded-2xl border border-[#d8c2aa] bg-white shadow-[0_10px_30px_rgba(70,40,20,.05)]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 md:px-6">
+                  <span className="flex items-center gap-4">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#160c06] text-[12px] font-black text-[#d89a45]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-[14px] font-black uppercase tracking-[-0.01em] md:text-[15px]">{item.title}</span>
+                  </span>
+                  <span className="text-[24px] font-light text-[#a94f22]">+</span>
+                </summary>
+                <div className="border-t border-[#ead8c4] px-5 py-5 md:px-6">
+                  <div className="space-y-3 text-[14px] leading-7 text-[#604838]">
+                    {item.lines.map((line) => (
+                      <p key={line} className="flex gap-3">
+                        <span className="mt-[10px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d89a45]" />
+                        <span>{line}</span>
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-[#b64f27]/25 bg-[#fff4e8] p-6 md:p-7">
+            <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#a94f22]">Lưu ý an toàn</p>
+            <div className="mt-4 grid gap-3 text-[14px] leading-6 text-[#5d4434] sm:grid-cols-2">
+              <p>• Đảm bảo nguồn sạc có đầu ra 5V.</p>
+              <p>• Không để khóa tiếp xúc với nước hoặc chất lỏng.</p>
+              <p>• Không đưa vật lạ vào cổng hoặc lỗ khóa.</p>
+              <p>• Không đặt khóa vào lửa hoặc gần khí dễ cháy, dễ nổ.</p>
+              <p>• Khi đèn báo pin yếu nhấp nháy, hãy sạc kịp thời.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="installation" className="scroll-mt-24 bg-[#0b0704] px-5 py-14 text-white md:px-8 md:py-20">
+        <div className="mx-auto max-w-[1080px]">
+          <p className="text-[12px] font-black uppercase tracking-[0.2em] text-[#d89a45]">02 · Hướng dẫn lắp đặt</p>
+          <h2 className="mt-3 text-[32px] font-black uppercase leading-tight tracking-[-0.04em] md:text-[46px]">Lắp đúng ngay từ đầu</h2>
+          <p className="mt-4 max-w-[760px] text-[15px] leading-7 text-[#d8c4ac]">
+            Xem trực tiếp các trang hướng dẫn lắp gối đi kèm sản phẩm. Chạm vào ảnh để mở kích thước lớn khi cần đối chiếu chi tiết.
+          </p>
+
+          <div className="mt-9 grid gap-5 lg:grid-cols-3">
+            {installationSheets.map((sheet, index) => (
+              <article key={sheet.src} className="overflow-hidden rounded-3xl border border-[#d89a45]/25 bg-white/[0.05]">
+                <a href={sheet.src} target="_blank" rel="noreferrer" className="block bg-[#8fd5f1]">
+                  <img src={sheet.src} alt={sheet.title} className="aspect-[3/4] w-full object-contain" />
+                </a>
+                <div className="p-5">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-[#d89a45]">Trang {index + 1}</p>
+                  <h3 className="mt-2 text-[17px] font-black uppercase leading-tight">{sheet.title}</h3>
+                  <p className="mt-3 text-[13px] leading-6 text-[#d8c4ac]">{sheet.text}</p>
+                  <a href={sheet.src} target="_blank" rel="noreferrer" className="mt-4 inline-block text-[12px] font-extrabold uppercase text-[#e2a54e] underline underline-offset-4">
+                    Xem ảnh toàn màn hình
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="warranty" className="scroll-mt-24 px-5 py-14 md:px-8 md:py-20">
+        <div className="mx-auto max-w-[1080px]">
+          <div className="grid gap-8 rounded-[32px] border border-[#d8c2aa] bg-white p-7 shadow-[0_24px_60px_rgba(80,45,20,.10)] md:p-10 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
+            <div>
+              <p className="text-[12px] font-black uppercase tracking-[0.2em] text-[#a94f22]">03 · Bảo hành</p>
+              <h2 className="mt-3 text-[32px] font-black uppercase leading-tight tracking-[-0.04em] md:text-[44px]">Bảo hành & hỗ trợ sau mua</h2>
+              <p className="mt-5 max-w-[680px] text-[15px] leading-7 text-[#604838]">
+                Để kiểm tra chính sách bảo hành áp dụng cho sản phẩm của bạn, vui lòng liên hệ Cricket qua Zalo hoặc Hotline. Thời hạn, phạm vi và điều kiện bảo hành chi tiết sẽ được cập nhật tại trang này sau khi chính sách chính thức được xác nhận.
+              </p>
+              <p className="mt-4 text-[13px] leading-6 text-[#876b58]">
+                Khi liên hệ, hãy chuẩn bị thông tin mua hàng và số sê-ri của sản phẩm nếu có để việc hỗ trợ thuận tiện hơn.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <a href={CONTACT.zaloHref} target="_blank" rel="noreferrer" className="block rounded-2xl bg-[#a94f22] px-6 py-4 text-center text-[13px] font-black uppercase text-white shadow-[0_12px_30px_rgba(169,79,34,.18)]">
+                Nhắn Zalo hỗ trợ
+              </a>
+              <a href={CONTACT.phoneHref} className="block rounded-2xl border-2 border-[#a94f22] px-6 py-4 text-center text-[13px] font-black uppercase text-[#a94f22]">
+                Gọi {CONTACT.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-[#d89a45]/20 bg-[#050403] px-5 py-8 text-white md:px-8">
+        <div className="mx-auto flex max-w-[1080px] flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div>
+            <p className="font-black uppercase">Cricket Việt Nam</p>
+            <p className="mt-1 text-[12px] text-[#d8c4ac]">Hướng dẫn sử dụng · Lắp đặt · Bảo hành</p>
+          </div>
+          <a href="/" className="text-[12px] font-extrabold uppercase text-[#d89a45] underline underline-offset-4">Về cricket.vn</a>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
 function Footer() {
   return (
     <footer className="border-t border-[#d89a45]/25 bg-[#050403] px-6 py-10 text-white md:py-8">
@@ -965,6 +1238,12 @@ function Footer() {
 }
 
 export default function App() {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (normalizedPath === "/ho-tro") {
+    return <SupportCenter />;
+  }
+
   return (
     <main className="bg-[#f7efe5] text-[#160d08]">
       <Header />

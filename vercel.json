@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/ho-tro",
+      "destination": "/"
+    },
+    {
+      "source": "/ho-tro/:path*",
+      "destination": "/"
+    }
+  ]
+}
