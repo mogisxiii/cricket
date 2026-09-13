@@ -266,6 +266,9 @@ function Header() {
           <a href="#contact" className="transition hover:text-[#e3a44e]">
             Liên hệ
           </a>
+          <a href="/ho-tro" className="transition hover:text-[#e3a44e]">
+            Hỗ trợ
+          </a>
         </nav>
 
         <a
