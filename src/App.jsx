@@ -1041,16 +1041,16 @@ function SupportCenter() {
     <main className="min-h-screen bg-[#f7efe5] text-[#160d08]">
       <header className="sticky top-0 z-40 border-b border-[#d89a45]/20 bg-[#050403]/95 px-5 py-3 text-white backdrop-blur md:px-8">
         <div className="mx-auto flex max-w-[1080px] items-center justify-between gap-4">
-          <a href="/" className="flex items-center gap-3" aria-label="Về trang chủ Cricket">
-            <img src={logo} alt="Cricket" className="h-11 rounded-md bg-white p-1" />
-            <div className="hidden sm:block">
-              <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#d89a45]">Cricket Vietnam</p>
-              <p className="text-[13px] font-semibold text-[#ead8c4]">Trung tâm hỗ trợ</p>
+          <a href="/" className="min-w-0" aria-label="Về trang chủ Cricket">
+            <div className="flex items-baseline gap-2 whitespace-nowrap">
+              <span className="text-[18px] font-black uppercase tracking-[-0.035em] text-white md:text-[20px]">Cricket</span>
+              <span className="hidden text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#d89a45] sm:inline">Vietnam</span>
             </div>
+            <p className="mt-0.5 hidden text-[11px] font-semibold text-[#bda792] sm:block">Trung tâm hỗ trợ</p>
           </a>
           <a
             href="/"
-            className="rounded-xl border border-[#d89a45]/45 px-4 py-2.5 text-[12px] font-extrabold uppercase tracking-[0.06em] text-[#f5dfc5] transition hover:bg-[#d89a45]/10"
+            className="shrink-0 rounded-xl border border-[#d89a45]/45 px-3.5 py-2.5 text-[11px] font-extrabold uppercase tracking-[0.06em] text-[#f5dfc5] transition hover:bg-[#d89a45]/10 sm:px-4 sm:text-[12px]"
           >
             Trang chủ
           </a>
@@ -1059,22 +1059,30 @@ function SupportCenter() {
 
       <section className="bg-[radial-gradient(circle_at_top_right,rgba(216,154,69,.18),transparent_34%),linear-gradient(180deg,#0b0603,#160b05)] px-5 py-14 text-white md:px-8 md:py-20">
         <div className="mx-auto max-w-[1080px]">
-          <p className="text-[12px] font-black uppercase tracking-[0.22em] text-[#d89a45]">QR Support Center</p>
-          <h1 className="mt-4 max-w-[780px] text-[clamp(36px,8vw,68px)] font-black uppercase leading-[0.98] tracking-[-0.055em]">
-            Hướng dẫn & hỗ trợ Cricket
+          <div className="flex items-center gap-3">
+            <span className="h-px w-8 bg-[#d89a45] sm:w-10" />
+            <p className="whitespace-nowrap text-[11px] font-black uppercase tracking-[0.24em] text-[#d89a45] sm:text-[12px]">Cricket</p>
+          </div>
+
+          <h1 className="mt-5 max-w-[760px] text-[32px] font-black uppercase leading-[1.02] tracking-[-0.045em] sm:text-[38px] md:text-[52px] lg:text-[58px]">
+            Hướng dẫn &amp; hỗ trợ
           </h1>
-          <p className="mt-6 max-w-[720px] text-[16px] leading-7 text-[#e5d2bd] md:text-[18px]">
-            Tra cứu nhanh cách sử dụng khóa, hướng dẫn lắp đặt và kênh hỗ trợ bảo hành ngay trên điện thoại.
+
+          <p className="mt-5 max-w-[660px] text-[17px] font-semibold leading-7 text-[#f3e4d3] md:text-[19px]">
+            Mọi thông tin cần thiết cho sản phẩm Cricket của bạn, tại một nơi.
+          </p>
+          <p className="mt-2 max-w-[700px] text-[14px] leading-6 text-[#cdb9a4] md:text-[15px] md:leading-7">
+            Tra cứu cách sử dụng khóa, hướng dẫn lắp đặt và kênh hỗ trợ bảo hành ngay trên điện thoại.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <a href="#lock-guide" className="rounded-2xl bg-[#d89a45] px-5 py-4 text-center text-[13px] font-black uppercase text-[#170d07] shadow-[0_12px_30px_rgba(216,154,69,.18)]">
-              Hướng dẫn khóa
+            <a href="#lock-guide" className="rounded-2xl bg-[#d89a45] px-5 py-4 text-center text-[12px] font-black uppercase tracking-[0.02em] text-[#170d07] shadow-[0_12px_30px_rgba(216,154,69,.18)] sm:text-[13px]">
+              Hướng dẫn sử dụng
             </a>
-            <a href="#installation" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[13px] font-black uppercase text-white">
+            <a href="#installation" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[12px] font-black uppercase tracking-[0.02em] text-white sm:text-[13px]">
               Hướng dẫn lắp đặt
             </a>
-            <a href="#warranty" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[13px] font-black uppercase text-white">
+            <a href="#warranty" className="rounded-2xl border border-[#d89a45]/45 bg-white/[0.04] px-5 py-4 text-center text-[12px] font-black uppercase tracking-[0.02em] text-white sm:text-[13px]">
               Bảo hành
             </a>
           </div>
