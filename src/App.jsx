@@ -1102,8 +1102,23 @@ function SupportCenter() {
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <div className="rounded-3xl border border-[#d9bea1] bg-white p-6 shadow-[0_18px_45px_rgba(80,45,20,.08)]">
               <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#a94f22]">Thông số mặc định</p>
-              <p className="mt-3 text-[30px] font-black">1234</p>
-              <p className="mt-1 text-[14px] font-bold">Mật khẩu quản trị mặc định</p>
+              <div className="mt-3 flex items-center gap-3">
+                <span className="text-[34px] font-black tracking-[-0.04em]">
+                   1234
+                </span>
+
+                <span className="text-[24px] font-black text-[#d89a45]">
+                    →
+                </span>
+
+                <span className="rounded-xl bg-[#160c06] px-4 py-2 text-[17px] font-black uppercase text-white">
+                   OK
+                </span>
+            </div>
+
+<p className="mt-2 text-[14px] font-bold text-[#4d382b]">
+  Nhập mật khẩu quản trị mặc định rồi nhấn OK
+</p>
               <div className="mt-5 grid grid-cols-2 gap-3 text-[13px]">
                 <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Mật khẩu giả:</strong><br />Bật</div>
                 <div className="rounded-xl bg-[#f7efe5] p-3"><strong>Còi báo:</strong><br />Bật</div>
