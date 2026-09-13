@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import logo from "./assets/logo-cricket.png";
 import mascot from "./assets/mascot-cricket.png";
@@ -10,8 +10,6 @@ import product03 from "./assets/product-03.jpg";
 import product04 from "./assets/product-04.jpg";
 import product05 from "./assets/product-05.jpg";
 import product06 from "./assets/product-06.jpg";
-
-import productDemo from "./assets/product-demo.png";
 
 import theme01 from "./assets/theme-01.jpg";
 import theme02 from "./assets/theme-02.jpg";
@@ -53,18 +51,53 @@ const useCases = [
   },
 ];
 
+const productVariants = [
+  {
+    name: "Đen",
+    code: "TT1",
+    images: [
+      { label: "G1", src: "/products/cricket-tt1-black-g1.jpg" },
+      { label: "G2", src: "/products/cricket-tt1-black-g2.jpg" },
+    ],
+  },
+  {
+    name: "Nâu",
+    code: "TT8",
+    images: [
+      { label: "G1", src: "/products/cricket-tt8-brown-g1.jpg" },
+      { label: "G2", src: "/products/cricket-tt8-brown-g2.jpg" },
+    ],
+  },
+  {
+    name: "Kem",
+    code: "TT5",
+    images: [
+      { label: "G1", src: "/products/cricket-tt5-beige-g1.jpg" },
+      { label: "G2", src: "/products/cricket-tt5-beige-g2.jpg" },
+    ],
+  },
+  {
+    name: "Xám",
+    code: "TT2A",
+    images: [
+      { label: "G1", src: "/products/cricket-tt2a-gray-g1.jpg" },
+      { label: "G2", src: "/products/cricket-tt2a-gray-g2.jpg" },
+    ],
+  },
+];
+
 const videoItems = [
   {
     id: "clip01",
     title: "Khám phá Cricket",
-    text: "Tổng quan sản phẩm, cách thao tác và những điểm khác biệt khi sử dụng trên xe.",
-    image: productDemo,
+    text: "Xem tổng quan sản phẩm, cách thao tác và trải nghiệm thực tế trên xe.",
+    image: "/products/cricket-tt1-black-g2.jpg",
     videoSrc: "/videos/clip01.mp4",
   },
   {
     id: "clip02",
-    title: "Hướng dẫn lắp đặt Cricket",
-    text: "Theo dõi hướng dẫn lắp đặt Cricket theo 2 phần, từ chuẩn bị đến hoàn thiện và kiểm tra.",
+    title: "Hướng dẫn lắp đặt",
+    text: "Hướng dẫn theo 2 phần: chuẩn bị, lắp đặt, hoàn thiện và kiểm tra.",
     image: theme01,
     videoParts: [
       { label: "Phần 1", src: "/videos/clip07a.mp4" },
@@ -73,43 +106,43 @@ const videoItems = [
   },
   {
     id: "clip03",
-    title: "An toàn cất giữ vật dụng quan trọng",
-    text: "Không gian kín đáo để cất giữ đồ cá nhân, đồ bí mật và những vật dụng quan trọng ngay trên xe.",
+    title: "Cất giữ đồ quan trọng",
+    text: "Không gian kín đáo cho tiền mặt, giấy tờ và vật dụng quan trọng trên xe.",
     image: product01,
     videoSrc: "/videos/clip02.mp4",
   },
   {
     id: "clip04",
-    title: "Giấy tờ luôn gọn gàng và dễ tìm",
-    text: "Sắp xếp giấy tờ xe và giấy tờ cần thiết để thuận tiện hơn khi cần sử dụng.",
+    title: "Giấy tờ gọn gàng, dễ tìm",
+    text: "Giữ giấy tờ xe ngăn nắp và thuận tiện lấy ra khi cần.",
     image: product04,
     videoSrc: "",
   },
   {
     id: "clip05",
-    title: "Không gian riêng cho vật dụng cá nhân",
-    text: "Giải pháp kín đáo cho các vật dụng riêng tư cần được cất giữ ngay trên xe.",
+    title: "Không gian riêng tư",
+    text: "Nơi cất giữ kín đáo cho vật dụng cá nhân cần sự riêng tư.",
     image: product05,
     videoSrc: "",
   },
   {
     id: "clip06",
-    title: "Cất điện thoại và vật dụng thiết yếu",
-    text: "Một vị trí gọn, kín đáo cho điện thoại và những đồ dùng cần bảo quản cẩn thận.",
+    title: "Cất điện thoại an toàn",
+    text: "Một vị trí gọn gàng cho điện thoại và các vật dụng thiết yếu.",
     image: product06,
     videoSrc: "",
   },
   {
     id: "clip07",
-    title: "Gọn gàng trong mọi hành trình",
-    text: "Hình dung cách Cricket hòa vào nội thất xe và hỗ trợ việc cất giữ đồ dùng trong những chuyến đi hằng ngày.",
-    image: theme01,
+    title: "Gọn gàng mỗi hành trình",
+    text: "Giúp khoang xe ngăn nắp hơn trong mọi chuyến đi hằng ngày.",
+    image: "/products/cricket-journey-tidy.png",
     videoSrc: "",
   },
   {
     id: "clip08",
-    title: "Từ lựa chọn đến trải nghiệm thực tế",
-    text: "Cách chọn bộ phù hợp, đặt mua và hình dung trải nghiệm Cricket sau khi lắp trên xe.",
+    title: "Chọn phù hợp, dùng thực tế",
+    text: "Chọn phiên bản phù hợp và hình dung trải nghiệm sau khi lắp trên xe.",
     image: theme02,
     videoSrc: "",
   },
@@ -167,7 +200,27 @@ function Header() {
 }
 
 function Hero() {
+  const [heroVideoOpen, setHeroVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!heroVideoOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setHeroVideoOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [heroVideoOpen]);
+
   return (
+    <>
     <section
       id="product"
       className="relative overflow-hidden bg-[#080503] pt-[76px] text-white"
@@ -231,17 +284,30 @@ function Hero() {
               Xem giá bán lẻ
             </a>
 
-            <a
-              href="#videos"
-              className="rounded-xl border border-[#d89a45]/70 bg-black/30 px-8 py-4 text-[14px] font-extrabold uppercase text-white"
+            <button
+              type="button"
+              onClick={() => setHeroVideoOpen(true)}
+              className="rounded-xl border border-[#d89a45]/70 bg-black/30 px-8 py-4 text-[14px] font-extrabold uppercase text-white transition hover:border-[#d89a45] hover:bg-black/55"
             >
               ▶ Xem video thực tế
-            </a>
+            </button>
           </div>
         </div>
 
         <div className="relative min-h-[560px]">
-          <div className="absolute left-[32px] top-[84px] w-[74%] overflow-hidden rounded-[26px] border-[8px] border-[#120904] bg-[#120904] shadow-[0_36px_90px_rgba(0,0,0,.65)]">
+          <div
+            role="button"
+            tabIndex={0}
+            aria-label="Phát video sản phẩm Cricket"
+            onClick={() => setHeroVideoOpen(true)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setHeroVideoOpen(true);
+              }
+            }}
+            className="absolute left-[32px] top-[84px] w-[74%] cursor-pointer overflow-hidden rounded-[26px] border-[8px] border-[#120904] bg-[#120904] shadow-[0_36px_90px_rgba(0,0,0,.65)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#d89a45]"
+          >
             <img
               src={product03}
               alt="Két bí mật gắn tựa đầu ghế xe Cricket"
@@ -249,9 +315,10 @@ function Hero() {
             />
           </div>
 
-          <a
-            href="#videos"
-            className="absolute bottom-[118px] left-[68px] flex items-center gap-4 rounded-2xl border border-white/20 bg-black/65 px-6 py-4 backdrop-blur transition hover:border-[#d89a45]/70 hover:bg-black/80"
+          <button
+            type="button"
+            onClick={() => setHeroVideoOpen(true)}
+            className="absolute bottom-[118px] left-[68px] flex items-center gap-4 rounded-2xl border border-white/20 bg-black/65 px-6 py-4 text-left backdrop-blur transition hover:border-[#d89a45]/70 hover:bg-black/80"
           >
             <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white text-lg">
               ▶
@@ -260,10 +327,58 @@ function Hero() {
               <p className="text-[13px] font-black uppercase">Video sản phẩm</p>
               <p className="mt-1 text-[13px] font-semibold text-[#d8c4ac]">Xem video thực tế</p>
             </div>
-          </a>
+          </button>
         </div>
       </div>
     </section>
+
+    {heroVideoOpen && (
+      <div
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Video sản phẩm Cricket"
+        onClick={() => setHeroVideoOpen(false)}
+      >
+        <div
+          className="relative w-full max-w-[960px] overflow-hidden rounded-2xl border border-[#d89a45]/45 bg-[#120904] shadow-[0_30px_100px_rgba(0,0,0,.8)]"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            onClick={() => setHeroVideoOpen(false)}
+            aria-label="Đóng video"
+            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/75 text-xl font-bold text-white backdrop-blur transition hover:border-[#d89a45]/70 hover:bg-black"
+          >
+            ×
+          </button>
+
+          <div className="aspect-video bg-black">
+            <video
+              controls
+              autoPlay
+              playsInline
+              preload="metadata"
+              poster={product01}
+              className="h-full w-full bg-black object-contain"
+            >
+              <source src="/videos/clip02.mp4" type="video/mp4" />
+              Trình duyệt của bạn chưa hỗ trợ phát video.
+            </video>
+          </div>
+
+          <div className="border-t border-[#d89a45]/20 px-5 py-4 sm:px-6">
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#d89a45]">
+              Video sản phẩm
+            </p>
+            <h3 className="mt-1 text-[16px] font-extrabold uppercase text-white sm:text-[18px]">
+              An toàn cất giữ vật dụng quan trọng
+            </h3>
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 }
 
@@ -298,6 +413,90 @@ function UseCases() {
                 </p>
               </div>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProductVariantCard({ variant }) {
+  const [activeImage, setActiveImage] = useState(0);
+  const safeIndex = Math.min(activeImage, variant.images.length - 1);
+  const current = variant.images[safeIndex];
+
+  return (
+    <article className="overflow-hidden rounded-3xl border border-[#d8c2aa] bg-white shadow-[0_22px_55px_rgba(80,45,20,.10)]">
+      <div className="relative flex h-[320px] items-center justify-center overflow-hidden bg-[#f4ede5] p-4">
+        <img
+          key={current.src}
+          src={current.src}
+          alt={`Cricket màu ${variant.name} ${variant.code} ${current.label}`}
+          className="h-full w-full object-contain transition duration-300"
+        />
+        <div className="absolute left-4 top-4 rounded-full border border-[#a94f22]/25 bg-white/90 px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.08em] text-[#6b351e] shadow-sm backdrop-blur">
+          Mẫu thực tế
+        </div>
+      </div>
+
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#a94f22]">
+              Mã màu {variant.code}
+            </p>
+            <h3 className="mt-1 text-[21px] font-black uppercase tracking-[-0.025em]">
+              {variant.name}
+            </h3>
+          </div>
+
+          <div className="flex gap-2">
+            {variant.images.map((image, index) => (
+              <button
+                key={image.src}
+                type="button"
+                onClick={() => setActiveImage(index)}
+                aria-pressed={safeIndex === index}
+                aria-label={`${variant.name} ${image.label}`}
+                className={`min-w-11 rounded-lg border px-3 py-2 text-[11px] font-extrabold uppercase transition ${
+                  safeIndex === index
+                    ? "border-[#a94f22] bg-[#a94f22] text-white"
+                    : "border-[#d8c2aa] bg-[#fffaf4] text-[#6b4b37] hover:border-[#a94f22]"
+                }`}
+              >
+                {image.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <p className="mt-4 text-[13px] leading-6 text-[#5c4638]">
+          Hai góc ảnh thực tế giúp đối chiếu màu sắc và kiểu dáng trước khi chọn bộ phù hợp với nội thất xe.
+        </p>
+      </div>
+    </article>
+  );
+}
+
+function ProductVariants() {
+  return (
+    <section id="variants" className="bg-[#fffaf4] px-6 py-20">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mx-auto max-w-[860px] text-center">
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#a94f22]">
+            Chọn màu phù hợp nội thất
+          </p>
+          <h2 className="mt-4 text-[clamp(30px,7vw,48px)] font-extrabold uppercase leading-[1.06] tracking-[-0.045em]">
+            4 phiên bản • Đồng bộ theo xe
+          </h2>
+          <p className="mx-auto mt-5 max-w-[740px] text-[16px] leading-7 text-[#5c4638]">
+            Cricket có các tông đen, nâu, kem và xám để dễ lựa chọn theo màu ghế và phong cách nội thất của từng xe.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {productVariants.map((variant) => (
+            <ProductVariantCard key={variant.code} variant={variant} />
           ))}
         </div>
       </div>
@@ -407,7 +606,7 @@ function VideoGallery() {
                     {hasVideo ? "Video" : "Nội dung"} {String(index + 1).padStart(2, "0")}
                     {item.videoParts?.length ? " · 2 phần" : ""}
                   </p>
-                  <h3 className="mt-2 text-[16px] font-extrabold uppercase leading-5 tracking-[-0.02em]">
+                  <h3 className="mt-2 min-h-[40px] text-[16px] font-extrabold uppercase leading-5 tracking-[-0.02em]">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-[13px] leading-6 text-[#d8c4ac]">{item.text}</p>
@@ -453,26 +652,64 @@ function Trust() {
         <div>
           <div className="grid grid-cols-2 gap-5">
             {[
-              ["Demo lắp trên xe", productDemo],
-              ["Nội thất xe phù hợp", product02],
-              ["Sử dụng khi đi xa", theme01],
-              ["Bối cảnh di chuyển", theme02],
-            ].map(([title, img]) => (
+              {
+                title: "Mẫu mã thanh lịch",
+                image: "/products/cricket-tt1-black-g1.jpg",
+                fit: "contain",
+              },
+              {
+                title: "Lắp đặt đồng bộ trên xe",
+                image: product02,
+                fit: "cover",
+              },
+              {
+                title: "Thiết kế kín đáo • Đồng bộ tựa đầu",
+                image: "/products/cricket-tt5-beige-g1.jpg",
+                fit: "contain",
+              },
+            ].map((item) => (
               <div
-                key={title}
-                className="group relative h-[210px] overflow-hidden rounded-2xl border border-[#d89a45]/30"
+                key={item.title}
+                className={`group relative h-[210px] overflow-hidden rounded-2xl border border-[#d89a45]/30 ${
+                  item.fit === "contain" ? "bg-[#efe4d7] p-3" : "bg-black"
+                }`}
               >
                 <img
-                  src={img}
-                  alt={title}
-                  className="h-full w-full object-cover opacity-85 transition duration-300 group-hover:scale-105"
+                  src={item.image}
+                  alt={item.title}
+                  className={`h-full w-full opacity-90 transition duration-300 group-hover:scale-[1.03] ${
+                    item.fit === "contain" ? "object-contain" : "object-cover"
+                  }`}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                <span className="absolute bottom-4 left-4 rounded-lg bg-black/65 px-3 py-2 text-[13px] font-bold">
-                  {title}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                <span className="absolute bottom-4 left-4 rounded-lg bg-black/70 px-3 py-2 text-[13px] font-bold">
+                  {item.title}
                 </span>
               </div>
             ))}
+
+            <div className="group relative h-[210px] overflow-hidden rounded-2xl border border-[#d89a45]/30 bg-[#efe4d7] p-2">
+              <div className="grid h-full grid-cols-2 grid-rows-2 gap-1.5">
+                {[
+                  "/products/cricket-tt1-black-g1.jpg",
+                  "/products/cricket-tt8-brown-g1.jpg",
+                  "/products/cricket-tt5-beige-g1.jpg",
+                  "/products/cricket-tt2a-gray-g1.jpg",
+                ].map((src, index) => (
+                  <div key={src} className="overflow-hidden rounded-lg bg-white/75 p-1">
+                    <img
+                      src={src}
+                      alt={["Đen TT1", "Nâu TT8", "Kem TT5", "Xám TT2A"][index]}
+                      className="h-full w-full object-contain transition duration-300 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/5 to-transparent" />
+              <span className="absolute bottom-4 left-4 rounded-lg bg-black/70 px-3 py-2 text-[13px] font-bold">
+                4 phiên bản đồng bộ nội thất
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -733,6 +970,7 @@ export default function App() {
       <Header />
       <Hero />
       <UseCases />
+      <ProductVariants />
       <VideoGallery />
       <Trust />
       <Price />
