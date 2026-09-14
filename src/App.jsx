@@ -392,8 +392,8 @@ function Hero() {
             className="absolute left-[32px] top-[84px] w-[74%] cursor-pointer overflow-hidden rounded-[26px] border-[8px] border-[#120904] bg-[#120904] shadow-[0_36px_90px_rgba(0,0,0,.65)] outline-none transition focus-visible:ring-2 focus-visible:ring-[#d89a45]"
           >
             <img
-              src={product03}
-              alt="Két bí mật gắn tựa đầu ghế xe Cricket"
+              src="/products/visual-r1/01-hero-real-install.webp"
+              alt="Cricket lắp thực tế trên xe với khoang bảo mật mở"
               className="h-[390px] w-full rounded-[18px] object-cover"
             />
           </div>
@@ -462,6 +462,72 @@ function Hero() {
       </div>
     )}
     </>
+  );
+}
+
+
+function ProductStory() {
+  const steps = [
+    {
+      label: "01",
+      title: "Bảo mật",
+      text: "Thiết kế kín đáo như gối tựa đầu thông thường, khó nhận biết khoang cất giữ bên trong.",
+      image: "/products/visual-r1/04-product-closed-black.webp",
+    },
+    {
+      label: "02",
+      title: "An toàn",
+      text: "Khóa bảo mật tích hợp gọn bên cạnh, thuận tiện thao tác khi cần sử dụng.",
+      image: "/products/visual-r1/05-lock-side-detail.webp",
+    },
+    {
+      label: "03",
+      title: "Đa năng",
+      text: "Phù hợp cất giấy tờ, chìa khóa, tiền mặt và các vật dụng cá nhân quan trọng.",
+      image: "/products/visual-r1/06-product-open-black.webp",
+    },
+  ];
+
+  return (
+    <section className="bg-[#fff8ef] px-6 py-20">
+      <div className="mx-auto max-w-[1280px]">
+        <div className="mx-auto max-w-[850px] text-center">
+          <p className="text-[13px] font-bold uppercase tracking-[0.22em] text-[#a94f22]">
+            Gối tựa đầu ô tô có két bảo mật
+          </p>
+          <h2 className="mt-4 text-[clamp(30px,7vw,48px)] font-extrabold uppercase leading-[1.06] tracking-[-0.045em]">
+            Bảo mật • An toàn • Đa năng
+          </h2>
+          <p className="mx-auto mt-5 max-w-[720px] text-[16px] leading-7 text-[#5c4638]">
+            Cricket tích hợp khoang cất giữ bảo mật ngay trong gối tựa đầu ô tô, giúp bảo quản vật dụng quan trọng kín đáo trên xe.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {steps.map((step) => (
+            <article
+              key={step.label}
+              className="overflow-hidden rounded-3xl border border-[#d8c2aa] bg-white shadow-[0_20px_50px_rgba(80,45,20,.10)]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden bg-[#ece4dc]">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="h-full w-full object-cover transition duration-300 hover:scale-[1.02]"
+                />
+                <span className="absolute left-4 top-4 rounded-full border border-white/25 bg-black/70 px-3 py-1.5 text-[11px] font-black text-white backdrop-blur">
+                  {step.label}
+                </span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-[18px] font-black uppercase tracking-[-0.02em]">{step.title}</h3>
+                <p className="mt-3 text-[14px] leading-6 text-[#604838]">{step.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -737,18 +803,18 @@ function Trust() {
             {[
               {
                 title: "Mẫu mã thanh lịch",
-                image: "/products/cricket-tt1-black-g1.jpg",
-                fit: "contain",
+                image: "/products/visual-r1/02-variant-brown-install.webp",
+                fit: "cover",
               },
               {
                 title: "Lắp đặt đồng bộ trên xe",
-                image: product02,
+                image: "/products/visual-r1/09-installed-interior-gray.webp",
                 fit: "cover",
               },
               {
                 title: "Thiết kế kín đáo • Đồng bộ tựa đầu",
-                image: "/products/cricket-tt5-beige-g1.jpg",
-                fit: "contain",
+                image: "/products/visual-r1/10-open-lock-detail.webp",
+                fit: "cover",
               },
             ].map((item) => (
               <div
@@ -899,9 +965,9 @@ function Price() {
             </h3>
 
             <img
-              src={product03}
-              alt="Bộ Cricket 2 gối đồng bộ"
-              className="mt-6 h-[220px] w-full rounded-2xl object-cover"
+              src="/products/visual-r1/12-full-kit.webp"
+              alt="Bộ Cricket và phụ kiện đi kèm"
+              className="mt-6 h-[220px] w-full rounded-2xl bg-[#f4ede5] object-contain p-2"
             />
 
             <div className="mt-7 border-y border-[#ead8c4] py-6">
@@ -1274,6 +1340,7 @@ export default function App() {
     <main className="bg-[#f7efe5] text-[#160d08]">
       <Header />
       <Hero />
+      <ProductStory />
       <UseCases />
       <ProductVariants />
       <VideoGallery />
