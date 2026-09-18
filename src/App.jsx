@@ -108,7 +108,7 @@ const videoItems = [
     id: "clip03",
     title: "Cất giữ đồ quan trọng",
     text: "Không gian kín đáo cho tiền mặt, giấy tờ và vật dụng quan trọng trên xe.",
-    image: product01,
+    image: "/products/visual-r1/15-lock-unlock-real.jpg",
     videoSrc: "/videos/clip02.mp4",
   },
   {
