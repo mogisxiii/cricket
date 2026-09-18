@@ -47,7 +47,7 @@ const useCases = [
   {
     title: "Xe nhiều ghế",
     text: "Dễ lắp trên tựa đầu ghế, phù hợp nhiều dòng xe và nhiều bối cảnh sử dụng.",
-    image: product05,
+    image: "/products/visual-r1/13-multi-seat-variants.jpg",
   },
 ];
 
