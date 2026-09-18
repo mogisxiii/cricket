@@ -8,7 +8,7 @@ import product01 from "./assets/product-01.jpg";
 import product02 from "./assets/product-02.jpg";
 import product03 from "./assets/product-03.jpg";
 import product04 from "./assets/product-04.jpg";
-import product05 from "./assets/product-05.jpg";
+
 import product06 from "./assets/product-06.jpg";
 
 import theme01 from "./assets/theme-01.jpg";
@@ -122,7 +122,7 @@ const videoItems = [
     id: "clip05",
     title: "Không gian riêng tư",
     text: "Nơi cất giữ kín đáo cho vật dụng cá nhân cần sự riêng tư.",
-    image: product05,
+    image: "/products/visual-r1/14-private-storage-real.jpg",
     videoSrc: "",
   },
   {
