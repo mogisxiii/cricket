@@ -1043,53 +1043,107 @@ function ContactStrip() {
       id="contact"
       className="bg-[linear-gradient(180deg,#050403,#160c06,#050403)] px-6 py-14 text-white md:py-12"
     >
-      <div className="mx-auto grid max-w-[1280px] items-center gap-8 text-center lg:grid-cols-[0.36fr_1fr_0.75fr_0.85fr] lg:text-left">
-        <div className="mx-auto h-[150px] w-[150px] overflow-hidden rounded-[26px] bg-[#120904] shadow-[0_22px_55px_rgba(0,0,0,.45),0_0_34px_rgba(216,154,69,.12)] lg:mx-0 lg:h-[170px] lg:w-[170px]">
-          <div className="relative h-full w-full">
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(216,154,69,.22)_0%,rgba(216,154,69,.08)_42%,rgba(0,0,0,0)_72%)]" />
-            <img
-              src={mascot02}
-              alt="Mascot Cricket"
-              className="relative z-10 h-full w-full scale-[1.12] object-cover object-center opacity-100 brightness-[1.16] contrast-[1.08]"
-            />
-            <div className="pointer-events-none absolute inset-0 rounded-[26px] ring-1 ring-[#d89a45]/30" />
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_56%,rgba(0,0,0,.22)_100%)]" />
+      <div className="mx-auto max-w-[1280px]">
+        <div className="grid gap-6 lg:grid-cols-[0.88fr_1.12fr] lg:items-stretch">
+          <div className="rounded-[28px] border border-[#d89a45]/20 bg-white/[0.035] p-6 shadow-[0_20px_50px_rgba(0,0,0,.18)] md:p-7">
+            <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left lg:flex-col lg:items-start xl:flex-row xl:items-center">
+              <div className="h-[132px] w-[132px] shrink-0 overflow-hidden rounded-[24px] bg-[#120904] shadow-[0_18px_45px_rgba(0,0,0,.42),0_0_28px_rgba(216,154,69,.10)] md:h-[144px] md:w-[144px]">
+                <div className="relative h-full w-full">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(216,154,69,.22)_0%,rgba(216,154,69,.08)_42%,rgba(0,0,0,0)_72%)]" />
+                  <img
+                    src={mascot02}
+                    alt="Mascot Cricket"
+                    className="relative z-10 h-full w-full scale-[1.12] object-cover object-center opacity-100 brightness-[1.16] contrast-[1.08]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 rounded-[24px] ring-1 ring-[#d89a45]/30" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0)_56%,rgba(0,0,0,.22)_100%)]" />
+                </div>
+              </div>
+
+              <div className="min-w-0">
+                <p className="text-[12px] font-black uppercase tracking-[0.16em] text-[#d89a45]">
+                  Cricket Việt Nam
+                </p>
+                <p className="mt-3 text-[18px] font-extrabold uppercase leading-tight tracking-[-0.035em] text-white md:text-[20px]">
+                  Bảo vệ đồ vật quan trọng
+                </p>
+                <h2 className="mt-1 text-[30px] font-black uppercase leading-[1.02] tracking-[-0.05em] text-white md:text-[34px]">
+                  Cricket ở đây
+                </h2>
+                <p className="mt-4 max-w-[430px] text-[13px] leading-6 text-[#cdb8a4]">
+                  Tư vấn sản phẩm, đặt hàng, hợp tác và hỗ trợ thông tin trực tiếp từ Cricket.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="mx-auto max-w-[330px] lg:mx-0 lg:max-w-none">
-          <p className="text-[20px] font-extrabold uppercase leading-tight tracking-[-0.04em] md:text-[22px]">
-            Bảo vệ đồ vật quan trọng
-          </p>
-          <h2 className="mt-1 text-[30px] font-black uppercase leading-tight tracking-[-0.05em] md:text-[34px]">
-            Cricket luôn ở đây
-          </h2>
-        </div>
+          <div className="grid gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-[#d89a45]/20 bg-white/[0.045] p-5 md:p-6">
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#d89a45]">
+                  Tư vấn nhanh
+                </p>
+                <a
+                  href={CONTACT.phoneHref}
+                  className="mt-2 block text-[27px] font-black leading-none text-[#e3a44e] md:text-[30px]"
+                >
+                  {CONTACT.phoneDisplay}
+                </a>
+                <a
+                  href={CONTACT.zaloHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-block text-[13px] font-semibold text-[#d8c4ac] underline decoration-[#d89a45]/40 underline-offset-4 transition hover:text-white"
+                >
+                  Zalo / Call / SMS
+                </a>
+              </div>
 
-        <div className="mx-auto w-full max-w-[330px] rounded-2xl border border-[#d89a45]/20 bg-white/[0.04] p-5 lg:max-w-none lg:border-l lg:border-y-0 lg:border-r-0 lg:bg-transparent lg:pl-8">
-          <p className="text-[13px] font-extrabold uppercase text-[#d89a45]">Tư vấn nhanh</p>
-          <a href={CONTACT.phoneHref} className="mt-1 block text-[30px] font-black leading-none text-[#d89a45]">
-            {CONTACT.phoneDisplay}
-          </a>
-          <a
-            href={CONTACT.zaloHref}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-2 inline-block text-[13px] text-[#d8c4ac] underline decoration-[#d89a45]/40 underline-offset-4"
-          >
-            Zalo / Call / SMS
-          </a>
-        </div>
+              <div className="rounded-2xl border border-[#d89a45]/20 bg-white/[0.045] p-5 md:p-6">
+                <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#d89a45]">
+                  Hotline nhà máy
+                </p>
+                <a
+                  href="tel:+84792318318"
+                  className="mt-2 block text-[27px] font-black leading-none text-[#e3a44e] md:text-[30px]"
+                >
+                  0792 318 318
+                </a>
+                <p className="mt-3 text-[13px] font-semibold text-[#d8c4ac]">
+                  Liên hệ xưởng sản xuất
+                </p>
+              </div>
+            </div>
 
-        <div className="mx-auto w-full max-w-[330px] rounded-2xl border border-[#d89a45]/20 bg-white/[0.04] p-5 lg:max-w-none lg:border-l lg:border-y-0 lg:border-r-0 lg:bg-transparent lg:pl-8">
-          <p className="text-[13px] font-extrabold uppercase text-[#d89a45]">Đặt hàng & hợp tác</p>
-          <a
-            href={`mailto:${CONTACT.email}`}
-            className="mt-1 block break-words text-[26px] font-black leading-tight md:text-[28px]"
-          >
-            {CONTACT.email}
-          </a>
-          <p className="mt-2 text-[13px] text-[#d8c4ac]">Phản hồi trong 24h</p>
+            <div className="rounded-2xl border border-[#d89a45]/20 bg-white/[0.035] p-5 md:p-6">
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-8 bg-[#d89a45]" />
+                <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#d89a45]">
+                  Địa điểm Cricket
+                </p>
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2 md:gap-0">
+                <div className="md:pr-5">
+                  <p className="text-[11px] font-black uppercase tracking-[0.08em] text-white">
+                    Nhà máy sản xuất
+                  </p>
+                  <p className="mt-2 max-w-[440px] text-[13px] font-semibold leading-5 text-[#ead8c4] md:whitespace-nowrap">
+                    226 Phạm Văn Chiêu, P. Thông Tây Hội, HCM
+                  </p>
+                </div>
+
+                <div className="border-t border-[#d89a45]/15 pt-5 md:border-l md:border-t-0 md:pl-5 md:pt-0">
+                  <p className="text-[11px] font-black uppercase tracking-[0.08em] text-white">
+                    Địa chỉ kinh doanh
+                  </p>
+                  <p className="mt-2 max-w-[440px] text-[13px] font-semibold leading-5 text-[#ead8c4] md:whitespace-nowrap">
+                    998 Phạm Văn Đồng, P. Hiệp Bình, HCM
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1318,10 +1372,7 @@ function Footer() {
       <div className="mx-auto flex max-w-[1280px] flex-col items-center justify-center gap-4 text-center md:flex-row md:justify-between">
         <img src={logo} alt="Cricket" className="h-11 rounded-md bg-white p-1" />
 
-        <div>
-          <p className="font-extrabold uppercase leading-tight">Cricket Việt Nam</p>
-          <p className="mt-1 text-[13px] text-[#d8c4ac]">Két an toàn gắn tựa đầu ghế xe hơi</p>
-        </div>
+
 
         <p className="text-[13px] text-[#d8c4ac]">© 2026 Cricket Vietnam. All rights reserved.</p>
       </div>
