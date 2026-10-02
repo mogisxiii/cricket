@@ -973,7 +973,7 @@ function Price() {
             <div className="mt-7 border-y border-[#ead8c4] py-6">
               <p className="text-[13px] font-bold uppercase text-[#6b4b37]">Giá bán lẻ</p>
               <strong className="mt-2 block text-[clamp(32px,6vw,44px)] font-black leading-none text-[#a94f22]">
-                2.800.000 VND
+                3.500.000 VND
               </strong>
               <p className="mt-2 text-[15px] font-extrabold uppercase text-[#4d382b]">/ cặp</p>
             </div>
